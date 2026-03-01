@@ -1,60 +1,82 @@
 # Misinformation Detection in Telegram Groups using GNNs
 
 ## Overview
-This repository contains the codebase for the thesis project: **Classifying News Domains Shared in Telegram Chat Groups as Misinformation using Graph Neural Networks (GNNs)**.
 
-### Thesis Motivation
-The spread of misinformation in online platforms, particularly semi-anonymous messaging platforms like Telegram, poses a significant societal challenge. This project models Telegram groups and shared URLs as a graph structure, where:
-- **Nodes** represent domains grouped from URLs.
-- **Edges** represent sharing patterns in Telegram chat groups.
+This repository contains the codebase for the thesis project:
+Classifying News Domains Shared in Telegram Chat Groups as
+Misinformation using Graph Neural Networks (GNNs).
 
-The hypothesis: **Graph Neural Networks (GNNs) can outperform state-of-the-art methods in classifying domains into misinformation by leveraging graph structure.**
+## Thesis Motivation
+
+The spread of misinformation in online platforms, particularly
+semi-anonymous messaging platforms like Telegram, poses a significant
+societal challenge. This project models Telegram groups and shared URLs
+as a graph structure, where:
+
+-   Nodes represent domains grouped from URLs.
+-   Edges represent sharing patterns in Telegram chat groups.
+
+The hypothesis: Graph Neural Networks (GNNs) can outperform
+state-of-the-art methods in classifying domains into misinformation by
+leveraging graph structure.
 
 ## Repository Structure
 
-### 01 Preprocessing Codefiles
-#### merge_URL_domain
-Preprocessing script to merge URLs into their domains and filtering out Social Media domains.
+### 01 Data Preprocessing & Feature Engineering
 
-#### train_test_split
-Handles dataset partitioning into training and test sets and groups the URL-Chat matrix into a Domain-Chat matrix.
+merge_URL_domain.ipynb Merges URLs into their corresponding domains and
+filters out social media domains.
 
-#### scraper
-Scrapes the articles of the URL with selenium 
+train_test_split.ipynb Creates train/test splits and aggregates the
+URL–chat bipartite matrix into a domain–chat representation.
 
-#### nlp_article
-Creates embeddings of the articles with multilingual transformer model (paraphrase-multilingual-MiniLM-L12-v2)
+scraper.py Scrapes article content from URLs using Selenium.
 
-#### feature_generation
-Responsible for generating feature sets for nodes (domains), including metadata-based features.
+nlp_articles.py Generates semantic article embeddings using the
+multilingual Sentence-BERT model
+(paraphrase-multilingual-MiniLM-L12-v2).
 
-#### network_validation
-Application of bipartite configuration model (BiCM) in order to statistically validate node similarities.
+feature_generation.ipynb Constructs node-level (domain-level) features,
+including metadata and aggregated content features.
 
-#### topic_modeling_chat
-Performs topic modeling on chat data with LDA and SentenceBERT to add contextual features
+network_validation.ipynb Applies the Bipartite Configuration Model
+(BiCM) to statistically validate domain similarities and construct the
+validated monopartite projection.
+
+topic_modeling_chat.ipynb Performs topic modeling on chat data using LDA
+and Sentence-BERT to derive contextual chat-level features.
 
 ### 02 Baseline Models
-#### MLP
-Implementation of simple Multi-Layer Perceptron (MLP) classifiers as baseline for misinformation classification.
 
-#### BERT_fine_tuning
-Fine-tuning of multilingual BERT model on article content to serve as one of the reference classifiers.
+random_classifier.ipynb Implements a random classifier as a chance-level
+baseline.
 
+MLP_content.ipynb Multi-Layer Perceptron (MLP) using content embeddings
+and metadata.
 
-### 03 GNN Models
-### GCN_content_agnostic
-Implementation of different GNN (GCN, GAT, GraphSAGE) with content-agnostic metadata
+MLP_content_agnostic.ipynb MLP using metadata-only features (no textual
+embeddings).
 
-### GCN_embeddings
-GNN that combines article embeddings and metadata as features
+### 03 Graph Neural Network Models
 
-### GCN_hierarchical
-Explores hierarchical GCN architectures, modeling Telegram chat structures at multiple levels, including chat information (topics).
+GCN_content_agnostic.ipynb Graph Neural Network models (GCN, GAT,
+GraphSAGE) using only structural and metadata features.
 
-### 04 Testing
+GCN_content.ipynb GNN models combining network structure with article
+embeddings.
 
+## Project Workflow
 
-
-
-
+### 1.  Preprocessing
+    -   URL → Domain aggregation
+    -   Article scraping
+    -   Train/test split
+    -   Network validation
+### 2.  Feature Construction
+    -   Metadata features
+    -   Content embeddings
+    -   Topic modeling
+### 3.  Modeling
+    -   Random baseline
+    -   MLP baselines
+    -   Graph Neural Networks
