@@ -1,86 +1,97 @@
-#Misinformation Detection in Telegram Groups using GNNs
+# Misinformation Detection in Telegram Groups using GNNs
 
-##Overview
+## Overview
 
 This repository contains the codebase for the thesis project:
-Classifying News Domains Shared in Telegram Chat Groups as
-Misinformation using Graph Neural Networks (GNNs).
+
+**Classifying News Domains Shared in Telegram Chat Groups as Misinformation using Graph Neural Networks (GNNs).**
 
 ## Motivation
 
-The spread of misinformation in online platforms, particularly
-semi-anonymous messaging platforms like Telegram, poses a significant
-societal challenge. This project models Telegram groups and shared URLs
-as a graph structure, where:
+The spread of misinformation in online platforms, particularly semi-anonymous messaging platforms like Telegram, poses a significant societal challenge.
 
--   Nodes represent domains grouped from URLs.
--   Edges represent sharing patterns in Telegram chat groups.
+This project models Telegram groups and shared URLs as a graph structure, where:
 
-The hypothesis: Graph Neural Networks (GNNs) can outperform
-state-of-the-art methods in classifying domains into misinformation by
-leveraging graph structure.
+- Nodes represent domains grouped from URLs  
+- Edges represent sharing patterns in Telegram chat groups  
 
-##Repository Structure
+**Hypothesis:** Graph Neural Networks (GNNs) can outperform state-of-the-art methods in classifying domains as misinformation by leveraging graph structure.
 
-###01 Data Preprocessing & Feature Engineering
+---
 
-merge_URL_domain.ipynb Merges URLs to Lin et al. domains and
-filters out social media domains.
+## Repository Structure
 
-scraper.py Scrapes article content from URLs using Selenium.
+### 01 – Data Preprocessing & Feature Engineering
 
-nlp_articles.py Generates semantic article embeddings using the
-multilingual Sentence-BERT model
-(paraphrase-multilingual-MiniLM-L12-v2).
+- **merge_URL_domain.ipynb**  
+  Merges URLs to Lin et al. domains and filters out social media domains.
 
-train_test_split.ipynb Creates train/test splits and aggregates the
-URL–chat bipartite matrix into a domain–chat representation.
+- **scraper.py**  
+  Scrapes article content from URLs using Selenium.
 
-feature_generation.ipynb Constructs node-level (domain-level) features,
-including metadata and aggregated content features.
+- **nlp_articles.py**  
+  Generates semantic article embeddings using the multilingual Sentence-BERT model  
+  (`paraphrase-multilingual-MiniLM-L12-v2`).
 
-network_validation.ipynb Applies the Bipartite Configuration Model
-(BiCM) to statistically validate domain similarities and construct the
-validated monopartite projection.
+- **train_test_split.ipynb**  
+  Creates train/test splits and aggregates the URL–chat bipartite matrix into a domain–chat representation.
 
-topic_modeling_chat.ipynb Performs topic modeling on chat data using LDA
-and Sentence-BERT to derive contextual chat-level features.
+- **feature_generation.ipynb**  
+  Constructs node-level (domain-level) features, including metadata and aggregated content features.
 
-###02 Baseline Models
+- **network_validation.ipynb**  
+  Applies the Bipartite Configuration Model (BiCM) to statistically validate domain similarities and construct the validated monopartite projection.
 
-random_classifier.ipynb Implements a random classifier as a chance-level
-baseline.
+- **topic_modeling_chat.ipynb**  
+  Performs topic modeling on chat data using LDA and Sentence-BERT to derive contextual chat-level features.
 
-MLP_content.ipynb Multi-Layer Perceptron (MLP) using content embeddings
-and metadata.
+---
 
-MLP_content_agnostic.ipynb MLP using metadata-only features (no textual
-embeddings).
+### 02 – Baseline Models
 
-###03 Graph Neural Network Models
+- **random_classifier.ipynb**  
+  Implements a random classifier as a chance-level baseline.
 
-GNN_content_agnostic.ipynb Graph Neural Network models (GCN, GAT,
-GraphSAGE) using only structural and metadata features.
+- **MLP_content.ipynb**  
+  Multi-Layer Perceptron (MLP) using content embeddings and metadata.
 
-GNN_content.ipynb GNN models combining network structure with article
-embeddings.
+- **MLP_content_agnostic.ipynb**  
+  MLP using metadata-only features (no textual embeddings).
 
-##Project Workflow
+---
 
-###1.  Preprocessing
-    -   URL → Domain aggregation
-    -   Article scraping
-    -   Train/test split
-    -   Network validation
-###2.  Feature Construction
-    -   Metadata features
-    -   Content embeddings
-    -   Topic modeling
-###3.  Modeling
-    -   Random baseline
-    -   MLP baselines
-    -   Graph Neural Networks
+### 03 – Graph Neural Network Models
 
-##Contact
+- **GNN_content_agnostic.ipynb**  
+  Graph Neural Network models (GCN, GAT, GraphSAGE) using only structural and metadata features.
+
+- **GNN_content.ipynb**  
+  GNN models combining network structure with article embeddings.
+
+---
+
+## Project Workflow
+
+### 1. Preprocessing
+
+- URL → Domain aggregation  
+- Article scraping  
+- Train/test split  
+- Network validation  
+
+### 2. Feature Construction
+
+- Metadata features  
+- Content embeddings  
+- Topic modeling  
+
+### 3. Modeling
+
+- Random baseline  
+- MLP baselines  
+- Graph Neural Networks  
+
+## Contact
+
 This repository was developed in cooperation with Dr. Giordano De Marzo (https://giordano-demarzo.github.io/) and the University of Konstanz.
 For question please contact: Raphaela Keßler, raphaelakessler@gmail.com
