@@ -24,17 +24,17 @@ leveraging graph structure.
 
 ### 01 Data Preprocessing & Feature Engineering
 
-merge_URL_domain.ipynb Merges URLs into their corresponding domains and
+merge_URL_domain.ipynb Merges URLs to Lin et al. domains and
 filters out social media domains.
-
-train_test_split.ipynb Creates train/test splits and aggregates the
-URL–chat bipartite matrix into a domain–chat representation.
 
 scraper.py Scrapes article content from URLs using Selenium.
 
 nlp_articles.py Generates semantic article embeddings using the
 multilingual Sentence-BERT model
 (paraphrase-multilingual-MiniLM-L12-v2).
+
+train_test_split.ipynb Creates train/test splits and aggregates the
+URL–chat bipartite matrix into a domain–chat representation.
 
 feature_generation.ipynb Constructs node-level (domain-level) features,
 including metadata and aggregated content features.
