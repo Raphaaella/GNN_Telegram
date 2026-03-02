@@ -1,12 +1,12 @@
-# Misinformation Detection in Telegram Groups using GNNs
+#Misinformation Detection in Telegram Groups using GNNs
 
-## Overview
+##Overview
 
 This repository contains the codebase for the thesis project:
 Classifying News Domains Shared in Telegram Chat Groups as
 Misinformation using Graph Neural Networks (GNNs).
 
-## Thesis Motivation
+##Thesis Motivation
 
 The spread of misinformation in online platforms, particularly
 semi-anonymous messaging platforms like Telegram, poses a significant
@@ -20,9 +20,9 @@ The hypothesis: Graph Neural Networks (GNNs) can outperform
 state-of-the-art methods in classifying domains into misinformation by
 leveraging graph structure.
 
-## Repository Structure
+##Repository Structure
 
-### 01 Data Preprocessing & Feature Engineering
+###01 Data Preprocessing & Feature Engineering
 
 merge_URL_domain.ipynb Merges URLs to Lin et al. domains and
 filters out social media domains.
@@ -46,7 +46,7 @@ validated monopartite projection.
 topic_modeling_chat.ipynb Performs topic modeling on chat data using LDA
 and Sentence-BERT to derive contextual chat-level features.
 
-### 02 Baseline Models
+###02 Baseline Models
 
 random_classifier.ipynb Implements a random classifier as a chance-level
 baseline.
@@ -57,26 +57,26 @@ and metadata.
 MLP_content_agnostic.ipynb MLP using metadata-only features (no textual
 embeddings).
 
-### 03 Graph Neural Network Models
+###03 Graph Neural Network Models
 
-GCN_content_agnostic.ipynb Graph Neural Network models (GCN, GAT,
+GNN_content_agnostic.ipynb Graph Neural Network models (GCN, GAT,
 GraphSAGE) using only structural and metadata features.
 
-GCN_content.ipynb GNN models combining network structure with article
+GNN_content.ipynb GNN models combining network structure with article
 embeddings.
 
-## Project Workflow
+##Project Workflow
 
-### 1.  Preprocessing
+###1.  Preprocessing
     -   URL → Domain aggregation
     -   Article scraping
     -   Train/test split
     -   Network validation
-### 2.  Feature Construction
+###2.  Feature Construction
     -   Metadata features
     -   Content embeddings
     -   Topic modeling
-### 3.  Modeling
+###3.  Modeling
     -   Random baseline
     -   MLP baselines
     -   Graph Neural Networks
