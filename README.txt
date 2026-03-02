@@ -6,7 +6,7 @@ This repository contains the codebase for the thesis project:
 Classifying News Domains Shared in Telegram Chat Groups as
 Misinformation using Graph Neural Networks (GNNs).
 
-##Thesis Motivation
+## Motivation
 
 The spread of misinformation in online platforms, particularly
 semi-anonymous messaging platforms like Telegram, poses a significant
@@ -80,3 +80,7 @@ embeddings.
     -   Random baseline
     -   MLP baselines
     -   Graph Neural Networks
+
+##Contact
+This repository was developed in cooperation with Dr. Giordano De Marzo (https://giordano-demarzo.github.io/) and the University of Konstanz.
+For question please contact: Raphaela Keßler, raphaelakessler@gmail.com
